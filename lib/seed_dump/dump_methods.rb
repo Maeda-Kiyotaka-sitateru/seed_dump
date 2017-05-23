@@ -21,6 +21,7 @@ class SeedDump
       # We select only string attribute names to avoid conflict
       # with the composite_primary_keys gem (it returns composite
       # primary key attribute names as hashes).
+      id = nil
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
 
         p attribute
