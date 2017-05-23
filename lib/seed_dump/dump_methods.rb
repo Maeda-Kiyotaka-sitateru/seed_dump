@@ -23,6 +23,7 @@ class SeedDump
       # primary key attribute names as hashes).
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
 
+        p attribute
         id = value if attribute == "id"
 
         # mask/mask_value add
