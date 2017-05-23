@@ -25,7 +25,7 @@ class SeedDump
         
         # mask/mask_value add
         options[:mask].each do |mask|
-          m.each do |m, v|
+          mask.each do |m, v|
             p m
             p v
           end
