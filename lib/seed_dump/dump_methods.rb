@@ -32,7 +32,7 @@ class SeedDump
           mask.each do |m, v|
             p id
             #  if m == attribute.to_sym
-            if m.include?(':email') 
+            if m == ':email'
               attribute_strings << dump_attribute_new(attribute, "{#id}@sitateru.com", options)
             else
               attribute_strings << dump_attribute_new(attribute, v, options) if m.include?(attribute.to_sym) 
