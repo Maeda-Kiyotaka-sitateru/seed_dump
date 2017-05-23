@@ -27,7 +27,7 @@ class SeedDump
           id = value 
           p id
         end
-        
+
         # mask/mask_value add
         options[:mask].each do |mask|
           mask.each do |m, v|
@@ -36,7 +36,7 @@ class SeedDump
               p m
               p v
               puts "id:" + id.to_s
-              attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
+              attribute_strings << dump_attribute_new(attribute, "#{id.to_s}@sitateru.com", options)
             else
               attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute.to_sym
             end
