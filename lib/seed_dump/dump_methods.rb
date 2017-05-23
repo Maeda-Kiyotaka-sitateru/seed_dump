@@ -22,8 +22,11 @@ class SeedDump
       # with the composite_primary_keys gem (it returns composite
       # primary key attribute names as hashes).
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
+        
         # mask/mask_value add
-        attribute_strings << dump_attribute_new(attribute, options[:mask_value], options) if options[:mask].include?(attribute.to_sym)
+        options[:mask].each do |m, v|
+          attribute_strings << dump_attribute_new(attribute, options[v], options) if m.include?(attribute.to_sym)
+        end
 
         attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
       end
