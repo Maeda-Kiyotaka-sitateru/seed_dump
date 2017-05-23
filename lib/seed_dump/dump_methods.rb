@@ -23,15 +23,19 @@ class SeedDump
       # primary key attribute names as hashes).
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
 
-        id = value if attribute == "id"
+        if attribute == "id"
+          id = value 
+          p id
+        end
+        
         # mask/mask_value add
         options[:mask].each do |mask|
           mask.each do |m, v|
-            p m
-            p v
-            puts "id:" + id.to_s
             #  if m == attribute.to_sym
             if m == ':email'
+              p m
+              p v
+              puts "id:" + id.to_s
               attribute_strings << dump_attribute_new(attribute, "{#id}@sitateru.com", options)
             else
               attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute.to_sym
