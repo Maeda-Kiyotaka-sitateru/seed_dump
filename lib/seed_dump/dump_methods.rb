@@ -36,7 +36,7 @@ class SeedDump
               p m
               p v
               puts "id:" + id.to_s
-              attribute_strings << dump_attribute_new(attribute, "{#id}@sitateru.com", options)
+              attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
             else
               attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute.to_sym
             end
