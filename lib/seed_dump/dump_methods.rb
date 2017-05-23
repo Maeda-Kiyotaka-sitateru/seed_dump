@@ -22,20 +22,23 @@ class SeedDump
       # with the composite_primary_keys gem (it returns composite
       # primary key attribute names as hashes).
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
+
+        p attribute
+        p value
         
         id = value if attribute == "id"
-        # mask/mask_value add
-        options[:mask].each do |mask|
-          mask.each do |m, v|
-            p id
-            #  if m == attribute.to_sym
-            if m == ":email"
-              attribute_strings << dump_attribute_new(attribute, "{#id}@sitateru.com", options)
-            else
-              attribute_strings << dump_attribute_new(attribute, v, options)
-            end
-          end
-        end
+        # # mask/mask_value add
+        # options[:mask].each do |mask|
+        #   mask.each do |m, v|
+        #     p id
+        #     #  if m == attribute.to_sym
+        #     if m == ":email"
+        #       attribute_strings << dump_attribute_new(attribute, "{#id}@sitateru.com", options)
+        #     else
+        #       attribute_strings << dump_attribute_new(attribute, v, options)
+        #     end
+        #   end
+        # end
 
         attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
       end
