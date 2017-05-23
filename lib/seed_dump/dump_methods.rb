@@ -29,7 +29,10 @@ class SeedDump
         options[:mask].each do |mask|
           mask.each do |m, v|
             next unless m.include?(attribute)
-            attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options) if attribute == "email"
+            if attribute == "email"
+              attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
+              next
+            end
             attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute
           end
         end
