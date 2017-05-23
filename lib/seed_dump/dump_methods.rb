@@ -25,6 +25,8 @@ class SeedDump
         
         # mask/mask_value add
         options[:mask].each do |m, v|
+          p m
+          p v
           attribute_strings << dump_attribute_new(attribute, options[v], options) if options[m].include?(attribute.to_sym)
         end
 
