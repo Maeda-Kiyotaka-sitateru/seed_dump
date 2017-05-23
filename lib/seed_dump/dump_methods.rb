@@ -35,7 +35,7 @@ class SeedDump
             if m == ':email'
               attribute_strings << dump_attribute_new(attribute, "{#id}@sitateru.com", options)
             else
-              attribute_strings << dump_attribute_new(attribute, v, options) if m.include?(attribute.to_sym) 
+              attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute.to_sym
             end
           end
         end
