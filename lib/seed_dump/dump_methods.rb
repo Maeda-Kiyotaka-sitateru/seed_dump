@@ -28,22 +28,24 @@ class SeedDump
 
         # mask/mask_value add
         id = value if attribute == "id"
-        attribute_strings << dump_attribute_new(attribute, value, options) unless options[:mask].keys.include?(attribute)
 
         options[:mask].each do |mask|
-          # mask.each do |m, v|
-          #   next unless m.include?(attribute)
+          unless mask.keys.include?(attribute)
+            attribute_strings << dump_attribute_new(attribute, value, options)
+            break
+          end
 
-          #   if attribute == "email"
-          #     attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
-          #     next
-          #   end
+          mask.each do |m, v|
+            if attribute == "email"
+              attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
+              break
+            end
 
-          #   if m == attribute
-          #     attribute_strings << dump_attribute_new(attribute, v, options) 
-          #     next
-          #   end
-          # end
+            if m == attribute
+              attribute_strings << dump_attribute_new(attribute, v, options) 
+              break
+            end
+          end
           # attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
         end
       end
