@@ -28,7 +28,7 @@ class SeedDump
           mask.each do |m, v|
             p m
             p v
-            attribute_strings << dump_attribute_new(attribute, options[v], options) if options[m].include?(attribute.to_sym)
+            attribute_strings << dump_attribute_new(attribute, v, options) if m.include?(attribute.to_sym)
           end
           
         end
