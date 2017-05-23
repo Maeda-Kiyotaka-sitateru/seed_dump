@@ -26,14 +26,11 @@ class SeedDump
         # mask/mask_value add
         options[:mask].each do |mask|
           mask.each do |m, v|
-            p m
-            p v
             attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute.to_sym
           end
-          
         end
 
-        # attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
+        attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
       end
 
       open_character, close_character = options[:import] ? ['[', ']'] : ['{', '}']
