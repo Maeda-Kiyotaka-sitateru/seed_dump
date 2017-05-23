@@ -31,12 +31,12 @@ class SeedDump
         # mask/mask_value add
         options[:mask].each do |mask|
           mask.each do |m, v|
+            p m
+            p v
             #  if m == attribute.to_sym
             if m == ':email'
-              p m
-              p v
               puts "id:" + id.to_s
-              attribute_strings << dump_attribute_new(attribute, "#{id.to_s}@sitateru.com", options)
+              attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
             else
               attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute.to_sym
             end
