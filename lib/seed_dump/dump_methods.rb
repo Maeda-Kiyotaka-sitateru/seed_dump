@@ -35,9 +35,8 @@ class SeedDump
             end
             attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute
           end
+          attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
         end
-
-        attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
       end
 
       open_character, close_character = options[:import] ? ['[', ']'] : ['{', '}']
