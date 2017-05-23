@@ -24,9 +24,11 @@ class SeedDump
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
         
         # mask/mask_value add
-        options[:mask].each do |m, v|
-          p m
-          p v
+        options[:mask].each do |mask|
+          m.each do |m, v|
+            p m
+            p v
+          end
           attribute_strings << dump_attribute_new(attribute, options[v], options) if options[m].include?(attribute.to_sym)
         end
 
