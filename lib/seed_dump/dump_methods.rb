@@ -24,18 +24,26 @@ class SeedDump
       id = nil
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
 
+        next if options[:exclude].include?(attribute.to_sym)
+
         # mask/mask_value add
         id = value if attribute == "id"
         options[:mask].each do |mask|
-          mask.each do |m, v|
-            next unless m.include?(attribute)
-            if attribute == "email"
-              attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
-              next
-            end
-            attribute_strings << dump_attribute_new(attribute, v, options) if m == attribute
-          end
-          attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
+          p mask.keys
+          # mask.each do |m, v|
+          #   next unless m.include?(attribute)
+
+          #   if attribute == "email"
+          #     attribute_strings << dump_attribute_new(attribute, "#{id}@sitateru.com", options)
+          #     next
+          #   end
+
+          #   if m == attribute
+          #     attribute_strings << dump_attribute_new(attribute, v, options) 
+          #     next
+          #   end
+          # end
+          # attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
         end
       end
 
