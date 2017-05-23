@@ -29,7 +29,7 @@ class SeedDump
         # mask/mask_value add
         id = value if attribute == "id"
         options[:mask].each do |mask|
-          p mask.keys
+          p mask.keys.include?(attribute)
           # mask.each do |m, v|
           #   next unless m.include?(attribute)
 
