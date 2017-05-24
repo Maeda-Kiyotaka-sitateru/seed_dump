@@ -27,13 +27,11 @@ class SeedDump
         if attribute == "id"
           id = value 
           attribute_strings << dump_attribute_new(attribute, value, options)
-          next
         end
 
         next if options[:exclude].include?(attribute.to_sym)
 
         # mask/mask_value add
-
         options[:mask].each do |mask|
           unless mask.keys.include?(attribute)
             attribute_strings << dump_attribute_new(attribute, value, options)
