@@ -24,10 +24,10 @@ class SeedDump
       id = nil
       record.attributes.select {|key| key.is_a?(String) }.each do |attribute, value|
 
+        p attribute
         if attribute == "id"
           id = value 
           attribute_strings << dump_attribute_new(attribute, value, options)
-          next
         end
 
         next if options[:exclude].include?(attribute.to_sym)
@@ -50,7 +50,7 @@ class SeedDump
               break
             end
           end
-          attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
+          # attribute_strings << dump_attribute_new(attribute, value, options) unless options[:exclude].include?(attribute.to_sym)
         end
       end
 
